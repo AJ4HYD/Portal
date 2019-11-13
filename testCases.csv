@@ -1,0 +1,108 @@
+id,name,description,timesaving,toolId
+1,Agent Charities,Register and enrol users for this service,,4
+2,Agent Corporation Tax,Register and enrol users for this service,,4
+3,Agent PAYE,Register and enrol users for this service,,4
+4,Agent SA,Register and enrol users for this service,,4
+5,Agent VAT,Register and enrol users for this service,,4
+6,Individual SA,Register and enrol users for this service,,4
+7,Individual VAT,Register and enrol users for this service,,4
+8,Organisation Corporation Tax,Register and enrol users for this service,,4
+9,Organisation PAYE,Register and enrol users for this service,,4
+10,Organisation SA Partnership,Register and enrol users for this service,,4
+11,Organisation SA Trust,Register and enrol users for this service,,4
+12,Organisation SA,Register and enrol users for this service,,4
+13,Organisation VAT,Register and enrol users for this service,,4
+14,Organisation Charities,Register and enrol users for this service,,4
+15,JSON Payload,Create a JSON Payload file,,5
+16,UTR - Cotax,Reference Type Generator for SAP Portal and DDC ,,6
+17,UTR - Cesa,Reference Type Generator for SAP Portal and DDC ,,6
+18,Brocs,Reference Type Generator for SAP Portal and DDC ,,6
+19,VRN,Reference Type Generator for SAP Portal and DDC ,,6
+20,CID NINO,Reference Type Generator for SAP Portal and DDC ,,6
+21,IRIS,Reference Type Generator for SAP Portal and DDC ,,6
+22,ETMP Master Data,ETMP flat file type,,1
+23,ETMP Transaction Data,ETMP flat file type,,1
+24,ETMP Return Data,ETMP flat file type,,1
+25,Open SEES,Check that application launches,,7
+26,Open TSS Directories &Addresses,Check that application launches,,7
+27,Open IDMS,Check that application launches,,7
+28,Open Dragon,Check that application launches,,7
+29,Open Jaws,Check that application launches,,7
+30,Open MS word,Check that application launches,,7
+31,Open MS Excel,Check that application launches,,7
+32,Open MS Outlook,Check that application launches,,7
+33,Open SCCM Client,Check that application launches,,7
+34,Open APP-V Client,Check that application launches,,7
+35,Open SA-Incorporating LDC,Check that application launches,,7
+36,EB5 FPS18 EDI Generator,Creates an FPS18 file for RTI in EDI format,,8
+37,EB5 EYU17 EDI Generator,Creates an EYU17 file for RTI in EDI format,,8
+38,DVT - General File validation check,Checks the file when it is first loaded and highlights any obvious data issues,,9
+39,DVT - Mandatory field check,Checks the specified fields contain data,,9
+40,DVT - Field size check,Check the specified field is within the character limit,,9
+41,DVT - Decimal size check,Checks the specified field is within the character limit before and after the decimal place,,9
+42,TC603 v25,Generate cases for TC603 form type for Print to Mail,,10
+43,TC601U v3.1,Generate cases for TC601U form type for Print to Mail,,10
+44,TC1131 v3.2,Generate cases for TC1131 form type for Print to Mail,,10
+45,CT61 v3,Generate cases for CT61 form type for Print to Mail,,10
+46,FEU1 v1,Generate cases for FEU1 form type for Print to Mail,,10
+47,P30B v2.2,Generate cases for P30B form type for Print to Mail,,10
+48,RTI 501 v6,Generate cases for RTI 501 form type for Print to Mail,,10
+49,RTI 502 v4,Generate cases for RTI 502 form type for Print to Mail,,10
+50,RTI 514 v2,Generate cases for RTI 514 form type for Print to Mail,,10
+51,RTI 515 v3,Generate cases for RTI 515 form type for Print to Mail,,10
+52,RTI 516 v2,Generate cases for RTI 516 form type for Print to Mail,,10
+53,RTI30B CL1A REM v0.1,Generate cases for RTI30B CL1A REM form type for Print to Mail,,10
+54,SAFE1-4 v1.2,Generate cases for SAFE1-4 form type for Print to Mail,,10
+55,SAFE5-8 v0.3,Generate cases for SAFE5-8 form type for Print to Mail,,10
+56,SDLT12 v1.1,Generate cases for SDLT12 form type for Print to Mail,,10
+57,SFPR1-7 v1.2,Generate cases for SFPR1-7 form type for Print to Mail,,10
+58,IFP Letter 1 v2,Generate cases for IFP Letter 1 form type for Print to Mail,,10
+59,IFP Letter 2 v2,Generate cases for IFP Letter 2 form type for Print to Mail,,10
+60,TC603U v5,Generate cases for IFP Letter 2 form type for Print to Mail,,10
+61,DVT - Flag check,Checks the field matches the specified flag,,9
+62,DVT - Fixed Field Size Check,Checks the field is the exact length specified,,9
+63,DVT - Field Count,Checks each line of data has the correct amount of fields/delimiters,,9
+64,DVT - Automatic Epid Validation,Automatically validates the data file against the specified EPID,,9
+65,Detokenization Query Generation,Generates SQL Detokenization Queries,,11
+66,Decision Service,Process submissions through decision service,,12
+67,RTI XML generator,Create XML file,,2
+68,CDS - Risk,,,13
+69,CDS - Declarations,,,13
+70,DVT - Fixed Length Delimited Validation,Automatically validates a fixed length delimited file based upon the rules set in the configuration file,,9
+71,DVT - Mandatory If,Check that a field contains data if another field is present,,9
+72,DVT - Present Only If,Checks the field contains data only if another field is present,,9
+73,DVT - Prohibited If,Checks the field does not contain data if another field is present,,9
+74,DVT - Regular Expression,Validates a field against a regular expression,,9
+75,Verify Successful Transmission of files from UTM to TransferMicroService,Trigger UTM / TransferMicroService workflow,,14
+76,DVT - Compound Key,Checks for duplicate groups of fields,,9
+77,DVT - Date/Timestamp Validation,Validates a field against a given Date/Time format,,9
+78,JAC - Create Epic,Create Epic,,15
+79,JAC - Create stories,Create stories,,15
+80,JAC - Create Tasks,Create Tasks,,15
+81,RCM,RCM,,16
+82,JAC - Create Automated Tasks,Create Automated Tasks,,15
+83,25FQ,Print to mail 25FQ form,,10
+84,CTY50,Print to mail CTY50 form,,10
+85,CTY51,Print to mail CTY51 form,,10
+86,CTY52,Print to mail CTY52 form,,10
+87,SL1,Print to mail SL1 form,,10
+88,SL2,Print to mail SL2 form,,10
+89,Print to mail Comparison,Print to mail Comparison,,17
+90,ITSA Acceptance Test Framework,ITSA Acceptance Test Framework,,18
+91,Launch VME,Launch VME,,19
+92,Set Date VME,Set Date VME,,19
+93,Start Services VME,Start Services VME,,19
+94,Launch SA,Launch SA,,19
+95,Set Up Individual Taxpayer,Set Up Individual Taxpayer,,19
+96,Set Up Partnership, Set Up Partnership,,19
+97,Set up Trust,Set up Trust,,19
+98,Add Partner,Add Partner,,19
+99,Record Date of Clerical Issue,Record Date of Clerical Issue,,19
+100,Create Return Charge,Create Return Charge,,19
+101,View Statement Evidence,View Statement Evidence,,19
+102,Return Summary Evidence,Return Summary Evidence,,19
+103,Batch Job,Batch Job,,19
+104,CDS - Registration & Subscription,,,20
+105,XML File validator,XML File validator,,18
+106,VAT Acceptance Test Framework,Automates Acceptance Tests for VAT,,13
+107,CDS - Inventory Linking,,,20

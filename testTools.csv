@@ -1,0 +1,21 @@
+id,name,description,timesaving,toolClass
+1,ETMP EPID validation for ADR,Validating and verifying data feeds between ETMP and ADR of two regimes - AMLS and AWRS in accordance to the EPID structure,15,Productivity Tools
+2,RTI Payload generator and submitter,"Creates FPS, EPS, and EYU payload files in XML format for the CDIO team and submits them to the RTI system",10,Productivity Tools
+4,HMRC Government Gateway Registration and Enrolment Tool,"Automation scripts for the registration and enrolment of new users on the HMRC Portal/Gateway for the  following services: VAT, SA, PAYE, Charities, and Corporate Tax",3,Productivity Tools
+5,DES payload creator and schema validator,Creates DES payload files in JSON format that can then be validated against project API specifications,3,Productivity Tools
+6,Reference Type Generator for SAP Portal and DDC ,Generates and inserts various record types including CESA and COTAX into SAP DDC (back-end) and then validates this data in SAP Portal (front-end),30,Productivity Tools
+7,Windows 7 Patch Testing,Ensures that common desktop applications still work after applying Windows patches,0.3,Test Tools
+8,Automation Portal EB5 Generators,"Browser based generation of EB5 files (FPS, EYU, and EPS types) in EDI and GFF formats for RTI system",3,Test Tools
+9,Delimited data file validation tool,"Loads and validates delimited data files. Provides functionality to ensure the data file follows specification, outlined in the corresponding EPID",3,Productivity Tools
+10,Print to Mail record generator,Generates cases in PRT format for Print to Mail,2,Productivity Tools
+11,EDH Detokenization Query Builder,Generates SQL detokenization queries from a set of metadata and highlights any defects,0.25,Productivity Tools
+12,Decision Service Tool,Processes submissions through decision service,0.8,Productivity Tools
+13,Functional/Integration  Automation Test Tool,execute the the acceptance testing is enusring the integrity of the application under test,10,Test Tools
+14,UTM MicroService Automation Test Framework,Triggers the UTM/TransferMicroService workflow and confirms successful transmission of files,2,Test Tools
+15,JIRA Automation Control (JAC),JIRA Automation Control,2,Productivity Tools
+16,RCM,RCM,2,Test tools
+17,Print to mail comparison,Print to mail comparison,2,Productivity Tools
+18,XML File validator,XML File validator,2,Test Tools
+19,CESA Automation,CESA Automation Framework,2,Test Tools
+20,CDS Test Framework,CDS Tests,2,Test Tools
+21,ITSA Test Framework,Setting Up and Executing Test,2,Test Tools
