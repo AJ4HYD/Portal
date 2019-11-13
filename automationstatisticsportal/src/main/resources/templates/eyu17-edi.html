@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+    <title>EB5 Generator: EYU17 EDI Format</title>
+    <!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
+</head>
+<body>
+
+<div class="container">
+    <!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
+    <h2>EB5 Generator: EYU17 EDI Format</h2>
+    <form action="#" th:action="@{/portal/eb5/eyu17/edi}" th:object="${eyu17_edi}" method="post">
+    <P><h3>Employer details</h3></P>
+	<p>Sender ID: <input type="text" th:field="*{senderId}" th:maxlength="14" size="14"/></p>
+	<p>HMRC Office Number: <input type="text" th:field="*{HMRCOfficeNumber}" /></p>
+	<p>Employer Name: <input type="text" th:field="*{employerName}" /></p>
+	<p>Employer PAYE Reference: <input type="text" th:field="*{employerPAYEReference}" /></p>
+	<p>Employer Accounts Office Ref: <input type="text" th:field="*{employerAccountsOfficeRef}" /></p>
+
+    <P><h3>Employee details</h3></P>
+    <p>Title: <input type="text" th:field="*{title}" th:maxlength="35" size="35"/></p>
+   	<p>Surname (REQUIRED FOR ADDRESS): <input type="text" th:field="*{surname}" th:maxlength="35" size="35"/></p>
+    <p>Forename: <input type="text" th:field="*{forename}" th:maxlength="35" size="35"/></p>
+	<p>Second Forename: <input type="text" th:field="*{secondForename}" th:maxlength="35" size="35"/></p>
+	<p>Address Line 1: <input type="text" th:field="*{addressLine1}" th:maxlength="35" size="35"/></p>
+	<p>Address Line 2: <input type="text" th:field="*{addressLine2}" th:maxlength="35" size="35"/></p>
+	<p>Address Line 3: <input type="text" th:field="*{addressLine3}" th:maxlength="35" size="35"/></p>
+	<p>Address Line 4: <input type="text" th:field="*{addressLine4}" th:maxlength="35" size="35"/></p>
+	<p>Uk Post Code: <input type="text" th:field="*{ukPostCode}" th:maxlength="10" size="10"/></p>
+	<p>Foreign Country: <input type="text" th:field="*{foreignCountry}" th:maxlength="35" size="35"/></p>
+	<p>Gender: <input type="text" th:field="*{Gender}" th:maxlength="1" size="1"/></p> <!-- rule11 -->
+	<p>NINO: <input type="text" th:field="*{NINO}" th:maxlength="9" size="9"/></p>
+	<p>Date of Birth (YYYYMMDD): <input size="8" type="number" th:field="*{dateOfBirth}" class="datepicker"/></p>
+	<p><mark>If date of Birth is not completed it will be set to today in the output.</mark></p>
+	<P><h3>Employment details</h3></P>
+	<p>Taxable Pay in This Pay Period Including Payrolled Benefits In Kind (pounds GBP): <input type="number" size="11" th:field="*{taxablePayinThisPayPeriodIncludingPayrolledBenefitsInKind}" /></p><!-- Rule 58  -->
+	<p>Tax code operated on this payment: <input type="text" size="7" th:field="*{specialServiceTaxCode}" /></p> <!-- r55 -->
+	<br></br>
+	    <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+    </form>
+</div>
+
+</body>
+</html>

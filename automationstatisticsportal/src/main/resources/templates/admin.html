@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+    <title>Automation Portal Login</title>
+
+    <!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
+</head>
+<body>
+<div class="container">
+    <!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
+    <h2>Automation Portal Login</h2>
+    
+		<div th:unless="${param.reset}">
+		   <h3 class="btn-danger">Warning this link will reset the statistics without asking for confirmation:</h3>
+           <a href="#" th:href="@{/portal/admin/reset?reset}">Reset automation statistics to zero</a>
+           <br></br>
+        </div>
+		<div th:if="${param.reset}">
+            The test tool statistics have been reset to zero.
+        </div>
+       <br></br>
+        <form th:action="@{/logout}" method="post">
+            <input type="submit" value="Sign Out"/>
+        </form>
+</div>
+</body>
+</html>

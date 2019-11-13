@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head lang="en">
+
+    <title>Test Suites</title>
+
+    <!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
+</head>
+<body>
+<!-- Include Date Range Picker -->
+<script type="text/javascript" src="/js/daterangepicker.js"></script>
+<link rel="stylesheet" type="text/css" href="/css/daterangepicker.css"/>
+<script>$(document).ready(function(){
+    $('#sortDate').daterangepicker({
+        "locale": {
+          format: 'YYYY-MM-DD'
+        },
+    	"showISOWeekNumbers": true,
+    	"ranges": {
+    		           'This Month': [moment().startOf('month'), moment().endOf('month')],
+    		           'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+    		        },
+        "alwaysShowCalendars": true,
+        "startDate": moment().startOf('month').format('YYYY-MM-DD'),
+        "endDate": moment().format('YYYY-MM-DD')
+    }, function(start, end, label) {
+      console.log("New date range selected: ' + + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')");
+      window.location.href = location.protocol+'//'+location.hostname+(location.port ? ':'+location.port: '') + '/portal/testtools/between/' + start.format('YYYY-MM-DD') + '/and/' + end.format('YYYY-MM-DD');
+    });
+});
+
+
+
+
+
+</script>
+
+<div class="container">
+    <!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
+    <a class="btn btn-primary btn-sm" role="button" id="sortDate" href="#">Filter by Date</a>
+    <a role="button" class="btn btn-primary btn-sm" href="/portal/testtool/addtool" sec:authorize="isAuthenticated()">Add
+        New Tool</a>
+    <div th:if="${not #lists.isEmpty(testtools)}">
+        <h2>TTAS Tool List</h2>
+        <table class="table table-striped">
+            <tr>
+                <th class="col-xs-1">Id</th>
+                <th class="col-xs-3">Name</th>
+                <th class="col-xs-1">Category</th>
+                <th class="col-md-4">Description</th>
+                <th class="col-xs-1">Total Data Items Generated</th>
+                <th class="col-xs-1">Total Runtime h:m:s:ms</th>
+                <th class="col-xs-1">Total Runs</th>
+                <th class="col-xs-1">Manual Effort Saved (Hours)</th>
+                <th class="col-xs-1"></th>
+            </tr>
+            <tr th:each="testtool : ${testtools}">
+                <td th:text="${testtool.id}"><a href="portal/testtool/${testtool.id}">Id</a></td>
+                <td th:text="${testtool.name}"></td>
+                <td th:text="${testtool.toolClass}"></td>
+                <td th:text="${testtool.description}"></td>
+                <td th:text="${testtool.generatedDataCount}"></td>
+                <td th:text="${testtool.totalRuntime!=null}?${{testtool.totalRuntime}}:''"></td>
+                <td th:text="${testtool.runCount}"></td>
+                <td th:text="${testtool.timeSaving&gt;0}?${#numbers.formatDecimal(testtool.timeSaving, 0, 'COMMA', 2, 'POINT')}"></td>
+                <td sec:authorize="isAuthenticated()">
+                    <a type="button" class="btn-sm btn-warning btn-space"
+                       th:href="@{/portal/testtool/updatetool(id=${testtool.id})}">Update</a>
+                </td>
+            </tr>
+            <tr class="info">
+                <th class="col-xs-1">Grand Totals:</th>
+                <th class="col-xs-3"></th>
+                <th class="col-xs-1"></th>
+                <th class="col-xs-4"></th>
+                <th class="col-xs-1" th:text="${totals.generatedDataCount}"></th>
+                <th class="col-xs-1" th:text="${{totals.totalRuntime}}"></th>
+                <th class="col-xs-1" th:text="${totals.runCount}"></th>
+                <th class="col-xs-1"
+                    th:text="${totals.timeSaving&gt;0}?${#numbers.formatDecimal(totals.timeSaving, 0, 'COMMA', 2, 'POINT')}+' hours'">
+                </th>
+                <th class="col-xs-1"></th>
+            </tr>
+        </table>
+
+    </div>
+</div>
+
+</body>
+</html>

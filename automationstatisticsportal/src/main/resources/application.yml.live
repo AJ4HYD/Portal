@@ -1,0 +1,13 @@
+load-files: "/home/users/tomcat/clientdata"
+spring:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:mysql://localhost/springboot
+    username: automation
+    password: kvnSt27SQe5b
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    database: MYSQL
+    show-sql: true
+  properties:
+    hibernate.hbm2ddl.auto: update

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Add Tool</title>
+
+    <!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
+</head>
+<body>
+<div class="container">
+    <!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
+    <form method="post">
+        <fieldset class="form-group">
+            <legend><h3>Tool Details:</h3></legend>
+            <table>
+                <tr>
+                    <td>Test Tool ID:</td>
+                    <td><input style="margin: 2px;" type="text" name="id" size="30" th:value="*{testTool.id}" required/></td>
+                </tr>
+                <tr>
+                    <td>Tool Name:</td>
+                    <td><input style="margin: 2px;" type="text" name="name" size="80" th:value="*{testTool.name}" required/></td>
+                </tr>
+                <tr>
+                    <td>Tool Description:</td>
+                    <td><textarea style="margin: 0px; width: 571px; height: 79px; resize: none;" type="text" name="description" size="80" th:inline="text" required>[[*{testTool.description}?: '']]</textarea></td>
+                </tr>
+                <tr>
+                    <td>Tool Category:</td>
+                    <td>
+                        <select class="custom-select" name="toolClass" th:inline="text" style="margin: 0px; width: 571px; height: 28px;" required>
+                            <option selected>[[*{testTool.toolClass}?:'']]</option>
+                            <option value="Test Tool">Test Tool</option>
+                            <option value="Productivity Tool">Productivity Tool</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>TimeSaving:</td>
+                    <td><input style="margin: 2px;" type="text" name="timeSaving" size="80" th:value="*{testTool.timeSaving}"/>
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+        <br><br>
+        <input type="submit" class="btn-lg btn-space btn-success">
+        <a type="submit" class="btn-lg btn-space btn" href="/portal/testtools">Cancel</a>
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+
+    <title>Event</title>
+
+    <!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
+</head>
+<body>
+
+<!-- Include Date Range Picker -->
+<script type="text/javascript" src="/js/daterangepicker.js"></script>
+<link rel="stylesheet" type="text/css" href="/css/daterangepicker.css" />
+
+<script>$(document).ready(function(){
+    $("#hideTest").click(function(){
+        $(".test").hide();
+        $("#showTest").show();
+    });
+    $("#showTest").click(function(){
+        $(".test").show();
+        $("#hidePass").show();
+        $("#hideWarn").show();
+        $("#hideFail").show();
+        $(".bg-warning").show();
+        $("#showTest").hide();
+        $("#showPass").hide();
+        $("#showWarn").hide();
+        $("#showFail").hide();
+    });
+    $("#hideData").click(function(){
+        $(".data").hide();
+        $("#showData").show();
+        $(".colExp").addClass('col-xs-6').removeClass('col-xs-3'); 
+    });
+    $("#showData").click(function(){
+        $(".data").show();
+        $("#hidePass").show();
+        $("#hideWarn").show();
+        $("#hideFail").show();
+        $(".bg-warning").show();
+        $("#showData").hide();
+        $("#showPass").hide();
+        $("#showWarn").hide();
+        $("#showFail").hide();
+        $(".colExp").addClass('col-xs-3').removeClass('col-xs-6'); 
+    });
+    $("#hidePass").click(function(){
+        $(".bg-success").hide();
+        $("#showPass").show();
+    });
+    $("#showPass").click(function(){
+        $(".bg-success").show();
+        $("#showPass").hide();
+    });
+    $("#hideWarn").click(function(){
+        $(".bg-warning").hide();
+        $("#showWarn").show();
+    });
+    $("#showWarn").click(function(){
+        $(".bg-warning").show();
+        $("#showWarn").hide();
+    });
+    $("#hideFail").click(function(){
+        $(".bg-danger").hide();
+        $("#showFail").show();
+    });
+    $("#showFail").click(function(){
+        $(".bg-danger").show();
+        $("#showFail").hide();
+    });
+    $('#sortDate').daterangepicker({
+        "locale": {
+          format: 'YYYY-MM-DD'
+        },
+    	"showISOWeekNumbers": true,
+    	"ranges": {
+    		           'This Month': [moment().startOf('month'), moment().endOf('month')],
+    		           'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+    		        },
+        "alwaysShowCalendars": true,
+        "startDate": moment().startOf('month').format('YYYY-MM-DD'),
+        "endDate": moment().format('YYYY-MM-DD')
+    }, function(start, end, label) {
+      console.log("New date range selected: ' + + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')");
+      window.location.href = location.protocol+'//'+location.hostname+(location.port ? ':'+location.port: '') + '/portal/testruns/between/' + start.format('YYYY-MM-DD') + '/and/' + end.format('YYYY-MM-DD');
+    });
+});
+
+</script>
+
+<div class="container">
+    <!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
+    <a class="btn btn-primary btn-sm" role="button" id="sortDate" href="#">Filter by Date</a>&nbsp;&nbsp;
+    <a class="btn btn-primary btn-sm" role="button" id="showTest" href="#" style="display: none;">Show Integration Tests</a>
+    <a class="btn btn-default btn-sm test" role="button" id="hideTest" href="#">Hide Integration Tests</a>
+    <a class="btn btn-primary btn-sm" role="button" id="showData" href="#" style="display: none;">Show Data Generation</a>
+    <a class="btn btn-default btn-sm data" role="button" id="hideData" href="#">Hide Data Generation</a>&nbsp;&nbsp;
+    <a class="btn btn-success btn-sm" role="button" id="showPass" href="#" style="display: none;">Show Passes</a>
+    <a class="btn btn-default btn-sm bg-success" role="button" id="hidePass" href="#">Hide Passes</a>
+    <a class="btn btn-warning btn-sm" role="button" id="showWarn" href="#" style="display: none;">Show Warnings</a>
+    <a class="btn btn-default btn-sm bg-warning" role="button" id="hideWarn" href="#">Hide Warnings</a>
+    <a class="btn btn-danger btn-sm" role="button" id="showFail" href="#" style="display: none;">Show Failures</a>
+    <a class="btn btn-default btn-sm bg-danger" role="button" id="hideFail" href="#">Hide Failures</a>
+
+    <div th:if="${not #lists.isEmpty(testruns)}">
+        <!-- div class="container-fluid"><b><span th:text="'Results: ' + ${testruns.size()}"></span></b></div-->
+        <h2>Run List</h2>
+        <div class="container-fluid">
+            <div class="row font-bold">
+                <div class="col-xs-1">Result</div>
+                <div class="col-xs-2">Start Time</div>
+                <div class="col-xs-2">Duration h:m:s:ms</div>
+                <div class="col-xs-2 colExp">Test Activity</div>
+                <div class="col-xs-1 text-right data">Data Generated</div>
+                <div class="col-xs-2 data">Data Type</div>
+                <div class="col-xs-1 data">Phase Type</div>
+                <div class="col-xs-1 text-right">Details</div>
+                <!-- <div>View</div> -->
+            </div>
+            <div th:each="testrun : ${testruns.pageList}" th:id="'e' + ${testrun.id}" th:class="|${testrun.GeneratedDataCount==null ? 'test':'data'} ${testrun.result==null ?'bg-warning':'__${testrun.result==true ?'bg-success':'bg-danger'}__'}|">
+                <div class="row">
+                    <div class="col-xs-1 font-bold" th:text="${testrun.result==null}?'warning':'__${testrun.result==true}?'pass':'failure'__'">Result</div>
+                    <div class="col-xs-2" th:text="${testrun.startDateTime}">Start</div>
+                    <div class="col-xs-2" th:text="${{testrun.runtimeMilliseconds}}">Duration</div>
+                    <!--<div class="col-xs-3 colExp" th:text="${testrun.TestSuite!=null}?${testrun.TestSuite.TestCase.name}:'unknown'">Test Case</div>-->
+                    <div class="col-xs-2 colExp" th:text="${testrun.TestCase!=null}?${testrun.TestCase.name}:'unknown'">Test Case</div>
+                    <div class="col-xs-1 text-right data" th:text="${testrun.GeneratedDataCount!=null}?${testrun.GeneratedDataCount}:'NA'">Total Data Items Generated</div>
+                    <div class="col-xs-2 data" th:text="${testrun.GeneratedDataType!=null}?${testrun.GeneratedDataType.name}:''">Type</div>
+                    <div class="col-xs-1 data" th:text="${testrun.PhaseType!=null}?${testrun.PhaseType.name}:''">Phase</div>
+                    <div class="col-xs-1">
+                        <a th:class="${testrun.result==null ?'btn btn-xs btn-pos btn-warning':'__${testrun.result==true ?'btn btn-xs btn-pos btn-success':'btn btn-xs btn-pos btn-danger'}__'}" role="button" data-toggle="collapse" aria-expanded="false" data-th-attr="aria-controls='message' + ${testrun.id}" th:href="'#message' + ${testrun.id}">Details</a>
+                    </div>
+                </div>
+                <div class="collapse message" th:id="'message' + ${testrun.id}">
+                    <div class="col-xs-12 bg-info font-grey" >Stacktrace/message:</div>
+                    <div class="col-xs-12 bg-info message"><pre th:text="${testrun.message!=null}?${testrun.message}:'no message'">Message</pre></div>
+                    <div class="col-xs-12 bg-info font-grey" th:text="${testrun.username!=null}?'run by: '+${testrun.username}:''">Username</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div th:replace="fragments/pagination :: [id='paginator']" th:remove="tag">Pagination Control</div>
+        <div class="container-fluid"><b><span th:text="'Results: ' + ${pager.totalItems}"></span></b></div>
+    </div>
+</div>
+
+</body>
+</html>

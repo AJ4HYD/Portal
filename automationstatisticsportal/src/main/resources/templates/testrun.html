@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+
+    <title>Test Run</title>
+
+    <!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
+</head>
+<body>
+<div class="container">
+    <!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
+
+    <h2>Event Log</h2>
+        <div>
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Test Run Id:</label>
+                    <div class="col-sm-10">
+                        <p class="form-control-static" th:text="${testrun.id}">Test Run Id</p></div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Description:</label>
+                    <div class="col-sm-10">
+                        <p class="form-control-static" th:text="${testrun.result}">result</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Username:</label>
+                    <div class="col-sm-10">
+                        <p class="form-control-static" th:text="${testrun.username}">user</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Data Items Generated:</label>
+                    <div class="col-sm-10">
+                        <p class="form-control-static" th:text="${testrun.generatedDataCount}">total number of items</p>
+                    </div>
+                </div>
+            </form>
+    </div>
+</div>
+
+</body>
+</html>

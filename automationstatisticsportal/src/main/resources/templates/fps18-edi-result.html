@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+    <title>EB5 Generator: FPS18 EDI File</title>
+
+    <!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
+</head>
+<body>
+<div class="container">
+    <!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
+    <h2>EB5 Generator: FPS18 EDI File:</h2>
+	<p th:utext="${fps18_edi_result}">File</p>
+</div>
+<br></br>
+<div class="container">
+    <h2>matching EYU17 EDI File:</h2>
+	<p th:utext="${eyu17_edi_result}">File</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+    <title>Browser Based Data Generation Tools</title>
+
+    <!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
+</head>
+<body>
+<div class="container">
+    <!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
+    <h2>Browser Based Data Generation Tools</h2>
+    
+	<ul>
+		<li><h4>EB5 Generators:</h4></li>
+		<ul>
+			<li><a href="#" th:href="@{/portal/eb5/fps18/edi}">FPS18 + EYU17 EDI file pair</a></li>
+			<li><a href="#" th:href="@{/portal/eb5/eyu17/edi}">EYU17 EDI file</a></li> 
+		</ul>
+	</ul>
+</div>
+</body>
+</html>

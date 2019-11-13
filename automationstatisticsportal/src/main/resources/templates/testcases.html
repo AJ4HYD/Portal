@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head lang="en">
+
+    <title>Test Cases</title>
+
+    <!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
+</head>
+<body>
+<div class="container">
+    <!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
+    <a role="button" class="btn btn-primary btn-sm" href="/portal/testcases/addcase" sec:authorize="isAuthenticated()">Add
+        A New Case</a>
+    <div th:if="${not #lists.isEmpty(testcases)}">
+        <h2>Test Activities</h2>
+        <table class="table table-striped">
+            <tr>
+                <th class="col-xs-1">Id</th>
+                <!--<th class="col-xs-1">Tool ID</th>-->
+                <th class="col-xs-2">Name</th>
+                <th class="col-xs-3">Description</th>
+                <th class="col-xs-1">Total Runtime h:m:s:ms</th>
+                <th class="col-xs-1">Total Data Items Generated</th>
+                <th class="col-xs-1">Total Passes</th>
+                <th class="col-xs-1">Total Failures</th>
+                <th class="col-xs-1">Manual Effort Saved (Hours)</th>
+                <th class="col-xs-1"></th>
+
+            </tr>
+            <tr th:each="testcase : ${testcases}">
+                <td th:text="${testcase.id}"><a href="portal/testcase/${testcase.id}">Id</a></td>
+                <!--<td th:text="${testcase.testTool.id}"></td>-->
+                <td th:text="${testcase.name}"></td>
+                <td th:text="${testcase.description}"></td>
+                <td th:text="${testcase.totalRuntime!=null}?${{testcase.totalRuntime}}:''"></td>
+                <td th:text="${testcase.generatedDataCount}"></td>
+                <td th:text="${testcase.totalPass}"></td>
+                <td th:text="${testcase.totalFail}"></td>
+                <td th:text="${testcase.timeSaving&gt;0}?${#numbers.formatDecimal(testcase.timeSaving, 0, 'COMMA', 2, 'POINT')}"></td>
+                <td sec:authorize="isAuthenticated()">
+                    <a type="button" class="btn-sm btn-warning btn-space"
+                       th:href="@{/portal/testcases/updatecase(id=${testcase.id})}">Update</a>
+                </td>
+            </tr>
+            <tr class="info">
+                <th class="col-xs-1">Grand Totals:</th>
+                <th class="col-xs-1"></th>
+                <th class="col-xs-2">Name</th>
+                <th class="col-xs-3">Description</th>
+                <th class="col-xs-1" th:text="${{totals.totalRuntime}}"></th>
+                <th class="col-xs-1" th:text="${totals.generatedDataCount}"></th>
+                <th class="col-xs-1" th:text="${totals.totalPass}"></th>
+                <th class="col-xs-1" th:text="${totals.totalFail}"></th>
+                <th class="col-xs-1"
+                    th:text="${totals.timeSaving&gt;0}?${#numbers.formatDecimal(totals.timeSaving, 0, 'COMMA', 2, 'POINT')}+ ' hours'"></th>
+                <th class="col-xs-1"></th>
+            </tr>
+        </table>
+
+    </div>
+</div>
+
+</body>
+</html>

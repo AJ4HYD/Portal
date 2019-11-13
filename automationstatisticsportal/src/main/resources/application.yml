@@ -1,0 +1,62 @@
+spring:
+  profiles: prod
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:mysql://localhost/springboot
+    username: automation
+    password: changeme
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    database: MYSQL
+    show-sql: true
+  properties:
+    hibernate.hbm2ddl.auto: update
+  load-files: /home/users/tomcat/clientdata
+---
+
+spring:
+  profiles: dev
+  datasource:
+      type: com.zaxxer.hikari.HikariDataSource
+      url: jdbc:mysql://localhost/springboot
+      username: root
+      password: root
+  jpa:
+      database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+      database: MYSQL
+      show-sql: true
+      hibernate.ddl-auto: update
+
+  load-files: C:\\Users\\OOGUNDIP\\Desktop\\New Automation Portal
+
+#spring:
+#  profiles: dev
+#  datasource:     C:\\Users\\OOGUNDIP\\Desktop\\Automation
+#    url: jdbc:h2:file:C:\\Users\\arvinven\\Desktop\\Automation Portal\\portal   /Users/olu/Downloads/wip
+#    driver-class-caseName: org.h2.Driver
+#    platform: h2
+#  jpa:
+#    database: H2
+#    database-platform: H2
+#    hibernate.ddl-auto: update
+#  h2:
+#    console:
+#      enabled: true
+#      path: /h2
+#  load-files: C:\\Users\\arvinven\\Desktop\\Automation Portal
+
+#{
+#  	"result": false,
+#  	"startDateTime": "2017-09-26T12:50:23.459Z",
+#  	"endDateTime": "2017-09-26T12:52:47.715Z",
+#  	"username": "OOGUNDIP",
+#  	"generatedDataCount": 1,
+#  	"generatedDataType": {
+#  		"toolId": 4
+#  	},
+#  	"testSuite": {
+#  		"toolId": 6
+#  	}
+#}
+
+#http://localhost:9090/testruns

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+    <title>EB5 Generator: FPS18 EDI Format</title>
+    <!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
+    <script type="text/javascript">
+    $( ".datepicker" ).datepicker();
+</script>
+</head>
+<body>
+
+
+<div class="container">
+    <!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
+
+    <h2>EB5 Generator: FPS18 EDI Format</h2>
+    <form action="#" th:action="@{/portal/eb5/fps18/edi}" th:object="${fps18_edi}" method="post">
+    <P><h3>Employer details</h3></P>
+	<p>Sender ID: <input type="text" th:field="*{senderId}" th:maxlength="14" size="14"/></p>
+	<p>HMRC Office Number: <input type="text" th:field="*{HMRCOfficeNumber}" /></p>
+	<p>Employer Name: <input type="text" th:field="*{employerName}" /></p>
+	<p>Employer PAYE Reference: <input type="text" th:field="*{employerPAYEReference}" /></p>
+	<p>Employer Accounts Office Ref: <input type="text" th:field="*{employerAccountsOfficeRef}" /></p>
+	<p>SAUTR: <input type="text" th:field="*{SAUTR}" /></p>
+	<p>Cotax Ref: <input type="text" th:field="*{cotaxRef}" /></p>
+	<p>Payroll Id: <input type="text" th:field="*{payrollId}" th:maxlength="35" size="35"/></p>
+
+    <P><h3>Employee details</h3></P>
+    <p>Title: <input type="text" th:field="*{title}" th:maxlength="35" size="35"/></p>
+   	<p>Surname (REQUIRED FOR ADDRESS): <input type="text" th:field="*{surname}" th:maxlength="35" size="35"/></p>
+    <p>Forename: <input type="text" th:field="*{forename}" th:maxlength="35" size="35"/></p>
+	<p>Second Forename: <input type="text" th:field="*{secondForename}" th:maxlength="35" size="35"/></p>
+	<p>Address Line 1: <input type="text" th:field="*{addressLine1}" th:maxlength="35" size="35"/></p>
+	<p>Address Line 2: <input type="text" th:field="*{addressLine2}" th:maxlength="35" size="35"/></p>
+	<p>Address Line 3: <input type="text" th:field="*{addressLine3}" th:maxlength="35" size="35"/></p>
+	<p>Address Line 4: <input type="text" th:field="*{addressLine4}" th:maxlength="35" size="35"/></p>
+	<p>Uk Post Code: <input type="text" th:field="*{ukPostCode}" th:maxlength="10" size="10"/></p>
+	<p>Foreign Country: <input type="text" th:field="*{foreignCountry}" th:maxlength="35" size="35"/></p>
+	<p>Gender: <input type="text" th:field="*{Gender}" th:maxlength="1" size="1"/></p> <!-- rule11 -->
+	<p>NINO: <input type="text" th:field="*{NINO}" th:maxlength="9" size="9"/></p>
+	<p>Date of Birth (YYYYMMDD): <input size="8" type="number" th:field="*{dateOfBirth}" class="datepicker"/></p>
+	<p><mark>If date of Birth is not completed it will be set to today in the output.</mark></p>
+	<P><h3>Employment details</h3></P>
+	<p>Payment Date (YYYYMMDD): <input size="8" type="number" th:field="*{paymentDate}" class="datepicker"/></p>
+	<p><mark>If payment date is not completed it will be set to today in the output.</mark></p>
+	<p>Tax code operated on this payment: <input type="text" size="7" th:field="*{specialServiceTaxCode}" /></p> <!-- r55 -->
+	<p>Pay Frequency: <!-- RULE42 -->
+	<select caseName="payFrequency" th:field="*{payFrequency}" >
+		<option value="W1">W1</option>
+		<option value="W2">W2</option>
+		<option value="W4">W4</option>
+		<option value="M1">M1</option> 
+		<option value="M3">M3</option>
+		<option value="M6">M6</option> 
+		<option value="MA">MA</option>
+		<option value="IO">IO</option>
+		<option value="IR">IR</option>
+	</select></p>
+	<p>Payment Period Number: <input type="number" th:field="*{paymentWeeklyPeriodNumber}" th:max="56" th:min="1" size="2"/></p><!-- RULE44 -->
+	<p>Number Of Periods Covered By Statement: <input type="text" th:field="*{numberOfPeriodsCoveredByStatement}" /></p>
+	<p>Number Of Normal Hours Worked: 
+		<select caseName="numberOfNormalHoursWorked" th:field="*{numberOfNormalHoursWorked}" >
+		<option value="A">A</option>
+		<option value="B">B</option>
+		<option value="C">C</option>
+		<option value="D">D</option> 
+		<option value="E">E</option>
+	</select></p>
+	<p>Taxable Pay To Date (pounds GBP): <input type="number" size="11" th:field="*{taxablePayToDate}" /></p><!-- Rule 41A  -->
+	<p>Total Tax To Date (pounds GBP): <input type="number" size="11" th:field="*{totalTaxToDate}" /></p><!-- Rule 41B  -->
+	<p>Taxable Pay in This Pay Period Including Payrolled Benefits In Kind (pounds GBP): <input type="number" size="11" th:field="*{taxablePayinThisPayPeriodIncludingPayrolledBenefitsInKind}" /></p><!-- Rule 58  -->
+	<p>Non Tax Or NIC Payment (pounds GBP): <input type="number" size="11" th:field="*{nonTaxOrNICPayment}" /></p><!-- Rule 58A  -->
+	<p>Deductions from Net Pay in this Pay Period (pounds GBP): <input type="number" size="11" th:field="*{deductionsfromNetPayinthisPayPeriod}" /></p><!-- Rule 58B  -->
+	<p>Pay after Statutory Deductions (pounds GBP): <input type="number" size="11" th:field="*{payafterStatutoryDeductions}" /></p><!-- Rule 59  -->
+	<p>Benefits Taxed via the Payroll (pounds GBP): <input type="number" size="11" th:field="*{benefitsTaxedviathePayroll}" /></p><!-- Rule 60  -->
+	<p>Employee Pension Contributions Paid Under Net Pay Arrangementsin Pay Period (pounds GBP): <input type="number" size="11" th:field="*{EmployeePensionContributionsPaidUnderNetPayArrangementsinPayPeriod}" /></p><!-- Rule 61  -->
+	<p>Items Subject to Class 1 NIC (pounds GBP): <input type="number" size="11" th:field="*{ItemsSubjecttoClass1NIC}" /></p><!-- Rule 62  -->
+	<p>Employee Contributions not Paid (pounds GBP): <input type="number" size="11" th:field="*{employeeContributionsnotPaid}" /></p><!-- Rule 65  -->
+	<p>Student Loan Repayment Recovered this Period (pounds GBP): <input type="number" size="11" th:field="*{StudentLoanRepaymentRecoveredthisPeriod}" /></p><!-- Rule 67  -->
+	<p>Student Loan Repayments Recovered To Date (pounds GBP): <input type="number" size="11" th:field="*{studentLoandsRepaymentsRecoveredToDate}" /></p><!-- Rule 41C  -->
+	<p>Tax Deducted or Refunded From This Payment (pounds GBP): <input type="number" size="11" th:field="*{taxDeductedorRefundedFromThisPayment}" /></p><!-- Rule 68  -->
+	<p>Statutory Maternity Pay SMP Year to Date (pounds GBP): <input type="number" size="11" th:field="*{statutoryMaternityPaySMPYeartoDate}" /></p><!-- Rule 70  -->
+	<p>Statutory Adoption Pay SAP Year to Date (pounds GBP): <input type="number" size="11" th:field="*{StatutoryAdoptionPaySAPYeartoDate}" /></p><!-- Rule 72  -->
+	<p>Statutory Paternity Pay SPP Year to Date (pounds GBP): <input type="number" size="11" th:field="*{StatutoryPaternityPaySPPYeartoDate}" /></p><!-- Rule 71  -->
+	<p>Shared Parental Pay ShPP Year to Date (pounds GBP): <input type="number" size="11" th:field="*{sharedParentalPayShPPYeartoDate}" /></p><!-- Rule 73  -->
+	<p>Benefits Taxed via the Payroll Year to Date (pounds GBP): <input type="number" size="11" th:field="*{benefitsTaxedviathePayrollYeartoDate}" /></p><!-- Rule 149  -->
+	<p>Employee Pension Contributions Paid Under net pay arrangements Year to Date (pounds GBP): <input type="number" size="11" th:field="*{employeePensionContributionsPaidUndernetpayarrangementsYeartoDate}" /></p><!-- Rule 150  -->
+	<p>Employee Pension Contributions Not Paid Under net pay arrangements Year to Date (pounds GBP): <input type="number" size="11" th:field="*{employeePensionContributionsNotPaidUndernetpayarrangementsYeartoDate}" /></p><!-- Rule 151  -->
+	<p>Flexible Drawdown Taxable Payment (pounds GBP): <input type="number" size="11" th:field="*{flexibleDrawdownTaxablePayment}" /></p><!-- Rule 173  -->
+	<p>Flexible Drawdown Non Taxable Payment (pounds GBP): <input type="number" size="11" th:field="*{flexibleDrawdownNonTaxablePayment}" /></p><!-- Rule 174  -->
+
+	<P><h3>Car details</h3></P>
+	<p>Licence Plate Number: <input type="text" th:field="*{carIdentifier}" th:maxlength="10" size="35"/></p>
+	<p><mark>* asterisk shows fields which are mandatory when Licence plate number is provided:</mark></p>
+	<p><b>* </b>Make and Model: <input type="text" th:field="*{carMakeModel}" th:maxlength="35" size="35"/></p>
+	<p><b>* </b>CO2 emission: <input type="text" th:field="*{carCO2EmissionsFigure}" th:maxlength="35" size="35"/></p>
+	<p><b>* </b>Fuel Type: <input type="text" th:field="*{carFuelType}" th:maxlength="35" size="35"/></p>
+	<p><b>* </b>Amendment Indicator: <input type="text" th:field="*{carAmendmentIndicator}" th:maxlength="35" size="35"/></p>
+    <p><b>* </b>Date Available From (YYYYMMDD): <input size="8" type="number" th:field="*{carDateCarWasAvailableFrom}" class="datepicker"/></p>
+	<p>Date Available To (YYYYMMDD): <input size="8" type="number" th:field="*{carDateCarWasAvailableTo}" class="datepicker"/></p>
+	<p>Date Free Fuel Provided (YYYYMMDD): <input size="8" type="number" th:field="*{carDateFreeFuelProvided}" class="datepicker"/></p>
+	<p>Date Free Fuel Withdrawn (YYYYMMDD): <input size="8" type="number" th:field="*{carDateFreeFuelWasWithdrawn}" class="datepicker"/></p>
+	<p><b>* </b>Calculated Price (pence GBP): <input type="number" size="11" th:field="*{carCalculatedPricePence}" /></p><!-- Rule 174  -->
+	<p><b>* </b>Cash Equivalent of Car(pence GBP): <input type="number" size="11" th:field="*{carCashEquivalentofCarPence}" /></p><!-- Rule 174  -->
+	<p>Cash Equivalent of Fuel (pence GBP): <input type="number" size="11" th:field="*{carCashEquivalentofFuelPence}" /></p><!-- Rule 174  -->
+	<p><mark>A missing mandatory field will result in "Whitelabel Error Page", press back button in browser to resolve</mark></p>
+	<br></br>
+	    <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+    </form>
+</div>
+
+</body>
+</html>

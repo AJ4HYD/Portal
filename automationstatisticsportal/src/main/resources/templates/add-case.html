@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Add Case</title>
+
+    <!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
+</head>
+<body>
+<div class="container">
+    <!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
+    <form method="post">
+        <fieldset>
+            <legend><h3>Set Test Case:</h3></legend>
+            <table>
+                <tr>
+                    <td>Test Case ID:</td>
+                    <td><input style="margin: 2px;" type="text" name="id" size="30" th:value="*{testCase.id}" required/></td>
+                </tr>
+                <tr>
+                    <td>Test Case Name:</td>
+                    <td><input style="margin: 2px;" type="text" name="name" size="80" th:value="*{testCase.name}" required/></td>
+                </tr>
+                <tr>
+                    <td>Test Case Description:</td>
+                    <td><textarea style="margin: 0px; width: 571px; height: 79px; resize: none;" type="text" name="description" size="80" th:inline="text" required>[[*{testCase.description}?:'']]</textarea></td>
+                </tr>
+                <tr>
+                    <td>TimeSaving:</td>
+                    <td><input style="margin: 2px;" type="text" name="timeSaving" size="80" th:value="*{testCase.timeSaving}"/></td>
+                </tr>
+                <tr>
+                    <td>Test Tool ID:</td>
+                    <td><input style="margin: 2px;" type="text" name="toolId" size="30" th:value="*{testCase.testTool != null ? testCase.testTool.id : ''}"/></td>
+                </tr>
+                <tr>
+                    <td>Test Tool ID:</td>
+                    <td>
+                        <select>
+                        <option th:value="*{testCase.testTool != null ? testCase.testTool.id}"></option>
+                        </select>
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+        <br><br>
+        <input type="submit" class="btn-lg btn-space btn-success">
+        <a type="submit" class="btn-lg btn-space btn" href="/portal/testcases">Cancel</a>
+    </form>
+</div>
+</body>
+</html>

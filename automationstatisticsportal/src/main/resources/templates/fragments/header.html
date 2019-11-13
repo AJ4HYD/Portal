@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<div class="container">
+    <div th:fragment="header">
+        <nav class="navbar navbar-default">
+            <div class="container">
+                <div class="navbar-header">
+              		 <h1> <img caseId="logo" th:src="@{/image/logo.png}" src="image/logo.png" height="31px"/> &nbsp;&nbsp;Automation Portal</h1>
+                    <b>
+                    <a class="navbar-brand" href="#" th:href="@{/}">Dashboard</a>
+                    <a class="navbar-brand" href="#" th:href="@{/portal/catalogue}">Catalogue</a>
+                    <ul class="nav navbar-nav">
+                        <li><a href="#" th:href="@{/portal/testruns}">Event Log</a></li>
+                        <li><a href="#" th:href="@{/portal/testtools}">Tools</a></li> 
+                        <li><a href="#" th:href="@{/portal/testcases}">Test Activities</a></li>
+                        <li><a href="#" th:href="@{/portal/generators}">Data Generators</a></li>
+                        <li><a href="https://almtools/confluence/pages/viewpage.action?pageId=474572883">Confluence</a></li>
+                        <li><a href="#" th:href="@{/portal/admin}">Admin?</a></li>
+                    </ul>
+					</b>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
+</body>
+</html>
